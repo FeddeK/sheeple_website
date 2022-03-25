@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+  /* set vars here like e.g.: */
+  /* --main-bg-color: brown; */
+  zoom: 2;
+  font-family: 'VT323', monospace;
+}
+
+h1 {text-align: center;}
+
+img {
+    margin: auto;
+    display: block;
+    transform: translate(0, 50%);
+  }
+
+  body {
+    background-image: url("pic/grass1.png");
+  }
+
+  .panel {
+		position: absolute ;
+		width: 32px ;
+		height: 32px ;
+		background-image: url("pic/sheeple1.png") ;
+	}
