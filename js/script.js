@@ -17,7 +17,7 @@ bg.src = ('pic/grass1.png');
 
 //Load Sheeple!
 const sheeple = new Image();
-sheeple.src = ('pic/sheeple1.png');
+sheeple.src = ('pic/sheeple0.png');
 
 bg.onload = () => {
     // ctx.drawImage(bg,0,0);
@@ -68,19 +68,19 @@ function animate() {
     window.requestAnimationFrame(animate);
     sheeplez.draw()
     if (keys.w.pressed){
-        sheeplez.position.y = sheeplez.position.y - 3;
+        sheeplez.position.y -= 3;
         text.innerHTML = ""
     }
     if (keys.s.pressed){
-        sheeplez.position.y = sheeplez.position.y + 3;
+        sheeplez.position.y += 3;
         text.innerHTML = ""
     }
     if (keys.a.pressed){
-        sheeplez.position.x = sheeplez.position.x - 3;
+        sheeplez.position.x -= 3;
         text.innerHTML = ""
     }
     if (keys.d.pressed){
-        sheeplez.position.x = sheeplez.position.x + 3;
+        sheeplez.position.x += + 3;
         text.innerHTML = ""
     }
 
