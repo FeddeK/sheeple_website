@@ -1,4 +1,5 @@
 const canvas = document.querySelector("canvas");
+var text = document.getElementById("txt")
 const ctx = canvas.getContext("2d");
 const zoom = 2;
 
@@ -23,6 +24,7 @@ bg.onload = () => {
     var pat = ctx.createPattern(bg, "repeat");
     ctx.fillStyle = pat;
     ctx.fill();
+    typeWriter();
 }
 
 class Sprite {
@@ -56,24 +58,30 @@ const keys = {
     },
     d: {
         pressed: false
+    },
+    any: {
+        pressed: false
     }
 }
 
 function animate() {
     window.requestAnimationFrame(animate);
     sheeplez.draw()
-    console.log("animate")
     if (keys.w.pressed){
         sheeplez.position.y = sheeplez.position.y - 3;
+        text.innerHTML = ""
     }
     if (keys.s.pressed){
         sheeplez.position.y = sheeplez.position.y + 3;
+        text.innerHTML = ""
     }
     if (keys.a.pressed){
         sheeplez.position.x = sheeplez.position.x - 3;
+        text.innerHTML = ""
     }
     if (keys.d.pressed){
         sheeplez.position.x = sheeplez.position.x + 3;
+        text.innerHTML = ""
     }
 
 }
@@ -84,15 +92,19 @@ window.addEventListener('keydown', (e) => {
     switch (e.key) {
         case 'w':
             keys.w.pressed = true;
+            keys.any.pressed = true;
             break
         case 'a':
             keys.a.pressed = true;
+            keys.any.pressed = true;
             break
         case 's':
             keys.s.pressed = true;
+            keys.any.pressed = true;
             break
         case 'd':
             keys.d.pressed = true;
+            keys.any.pressed = true;
             break
     }
 }
@@ -102,16 +114,36 @@ window.addEventListener('keyup', (e) => {
     switch (e.key) {
         case 'w':
             keys.w.pressed = false;
+            keys.any.pressed = false;
             break
         case 'a':
             keys.a.pressed = false;
+            keys.any.pressed = false;
             break
         case 's':
             keys.s.pressed = false;
+            keys.any.pressed = false;
             break
         case 'd':
             keys.d.pressed = false;
+            keys.any.pressed = false;
             break
     }
 }
 )
+
+var i = 0;
+var txt = 'Press a,w,s,d to walk.';
+var speed = 100;
+text.style.left = "600px";
+
+function typeWriter() {
+    if (i < txt.length) {
+        text.innerHTML += txt.charAt(i);
+        if (keys.any.pressed) {
+            return
+        }
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}

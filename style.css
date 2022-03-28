@@ -2,7 +2,7 @@
 
 :root {
   /* set vars here like e.g.: */
-  /* --main-bg-color: brown; */
+  --main-bg-color: #f2f2f2;
   /* zoom: 2; */
   font-family: 'VT323', monospace;
   /* used for pixel perfect */
@@ -44,11 +44,16 @@ img {
 
 body {
   /* background-image: url("pic/grass1.png"); */
-  background-color: #f2f2f2;
+  background-color: var(--main-bg-color); /* make var*/
   margin: 0;
   padding: 0;
   overflow: hidden;
   color: #454545;
+}
+
+p{
+  color: var(--main-bg-color);
+  z-index : 10;
 }
 
 .panel {
