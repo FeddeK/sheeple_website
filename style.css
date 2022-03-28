@@ -3,11 +3,38 @@
 :root {
   /* set vars here like e.g.: */
   /* --main-bg-color: brown; */
-  zoom: 2;
+  /* zoom: 2; */
   font-family: 'VT323', monospace;
+  /* used for pixel perfect */
+  image-rendering:optimizeSpeed;             /* Legal fallback */
+  image-rendering:-moz-crisp-edges;          /* Firefox        */
+  image-rendering:-o-crisp-edges;            /* Opera          */
+  image-rendering:-webkit-optimize-contrast; /* Safari         */
+  image-rendering:optimize-contrast;         /* CSS3 Proposed  */
+  image-rendering:crisp-edges;               /* CSS4 Proposed  */
+  image-rendering:pixelated;                 /* CSS4 Proposed  */
+  -ms-interpolation-mode:nearest-neighbor;   IE8+          
 }
 
 h1 {text-align: center;}
+
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+canvas {
+  /* zoom: 2; */
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
 
 img {
     margin: auto;
@@ -15,13 +42,46 @@ img {
     transform: translate(0, 50%);
   }
 
-  body {
-    background-image: url("pic/grass1.png");
-  }
+body {
+  /* background-image: url("pic/grass1.png"); */
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #454545;
+}
 
-  .panel {
-		position: absolute ;
-		width: 32px ;
-		height: 32px ;
-		background-image: url("pic/sheeple1.png") ;
-	}
+.panel {
+  position: absolute ;
+  width: 32px ;
+  height: 32px ;
+  /* background-image: url("pic/sheeple1.png") ; */
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
