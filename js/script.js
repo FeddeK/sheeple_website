@@ -141,7 +141,7 @@ function typeWriter() {
     if (i < txt.length) {
         text.innerHTML += txt.charAt(i);
         if (keys.any.pressed) {
-            return
+            return;
         }
         i++;
         setTimeout(typeWriter, speed);
