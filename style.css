@@ -43,8 +43,7 @@ img {
   }
 
 body {
-  /* background-image: url("pic/grass1.png"); */
-  background-color: var(--main-bg-color); /* make var*/
+  background-color: var(--main-bg-color);
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -54,13 +53,6 @@ body {
 p{
   color: var(--main-bg-color);
   z-index : 10;
-}
-
-.panel {
-  position: absolute ;
-  width: 32px ;
-  height: 32px ;
-  /* background-image: url("pic/sheeple1.png") ; */
 }
 
 /* Add a black background color to the top navigation */

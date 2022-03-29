@@ -16,8 +16,11 @@ const bg = new Image();
 bg.src = ('pic/grass1.png');
 
 //Load Sheeple!
-const sheeple = new Image();
-sheeple.src = ('pic/sheeple0.png');
+const sheepleRight = new Image();
+sheepleRight.src = ('pic/sheeple0.png');
+
+const sheepleLeft = new Image();
+sheepleLeft.src = ('pic/sheeple0_lft.png');
 
 bg.onload = () => {
     // ctx.drawImage(bg,0,0);
@@ -28,9 +31,11 @@ bg.onload = () => {
 }
 
 class Sprite {
-    constructor({ position, image }) {
+    constructor({ position, image, sprites }) {
         this.position = position;
         this.image = image;
+        this.moving = false;
+        this.sprites = sprites;
     }
 
     draw() {
@@ -43,7 +48,11 @@ const sheeplez = new Sprite({
         x : parseInt(ctx.canvas.width/2) - 16,
         y : parseInt(ctx.canvas.height/2) -16
     }, 
-    image: sheeple
+    image: sheepleRight,
+    sprites: {
+        right: sheepleRight,
+        left: sheepleLeft
+    }
 })
 
 const keys = {
@@ -66,22 +75,25 @@ const keys = {
 
 function animate() {
     window.requestAnimationFrame(animate);
+    ctx.fill()
     sheeplez.draw()
     if (keys.w.pressed){
         sheeplez.position.y -= 3;
-        text.innerHTML = ""
+        text.innerHTML = "";
     }
     if (keys.s.pressed){
         sheeplez.position.y += 3;
-        text.innerHTML = ""
+        text.innerHTML = "";
     }
     if (keys.a.pressed){
+        sheeplez.image = sheeplez.sprites.left;
         sheeplez.position.x -= 3;
-        text.innerHTML = ""
+        text.innerHTML = "";
     }
     if (keys.d.pressed){
+        sheeplez.image = sheeplez.sprites.right;
         sheeplez.position.x += + 3;
-        text.innerHTML = ""
+        text.innerHTML = "";
     }
 
 }
