@@ -1,7 +1,12 @@
 const canvas = document.querySelector("canvas");
 var text = document.getElementById("txt")
+var baa = document.getElementById("baa")
+var isFlipped = false;
 const ctx = canvas.getContext("2d");
 const zoom = 2;
+
+// canvas.width = 1024
+// canvas.height = 576
 
 ctx.canvas.width  = (window.innerWidth / zoom);
 ctx.canvas.height = (window.innerHeight / zoom);
@@ -87,15 +92,16 @@ function animate() {
     }
     if (keys.a.pressed){
         sheeplez.image = sheeplez.sprites.left;
+        isFlipped = true;
         sheeplez.position.x -= 3;
         text.innerHTML = "";
     }
     if (keys.d.pressed){
         sheeplez.image = sheeplez.sprites.right;
+        isFlipped = false;
         sheeplez.position.x += + 3;
         text.innerHTML = "";
     }
-
 }
 
 animate();
@@ -117,6 +123,9 @@ window.addEventListener('keydown', (e) => {
         case 'd':
             keys.d.pressed = true;
             keys.any.pressed = true;
+            break
+        case 'g':
+            baah();
             break
     }
 }
@@ -145,9 +154,26 @@ window.addEventListener('keyup', (e) => {
 )
 
 var i = 0;
-var txt = 'Press a,w,s,d to walk.';
+var txt = 'Press a,w,s,d to walk. Press g to baa!';
 var speed = 100;
-text.style.left = "600px";
+text.style.left = canvas.width/2 + "px";
+
+// baa-script
+function baah() {
+    if (isFlipped){
+        baa_x = parseInt(sheeplez.position.x*zoom)-55+"px"
+    }
+    else {
+        baa_x = parseInt(sheeplez.position.x*zoom)+55+"px";
+    }
+
+    baa.style.left= baa_x;
+    baa.style.top=parseInt(sheeplez.position.y*zoom)-5+"px";
+    baa.innerHTML="baa!"
+    setTimeout(function(){
+        baa.innerHTML = ""
+    }, 300);
+}
 
 function typeWriter() {
     if (i < txt.length) {
@@ -159,3 +185,5 @@ function typeWriter() {
         setTimeout(typeWriter, speed);
     }
 }
+
+
